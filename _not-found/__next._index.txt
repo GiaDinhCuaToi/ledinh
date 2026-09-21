@@ -1,9 +1,9 @@
 1:"$Sreact.fragment"
-2:I[77486,["787","static/chunks/787-d267683d3c135e5f.js","609","static/chunks/609-0ac3fce56292ceea.js","514","static/chunks/514-f5398c7db57eeef5.js","177","static/chunks/app/layout-9f8662d902ada21b.js"],"default"]
+2:I[77486,["787","static/chunks/787-a1fb9186ff5b3321.js","609","static/chunks/609-45744b5a79533738.js","514","static/chunks/514-706e45da66226975.js","177","static/chunks/app/layout-ba956eb9e8ac4be9.js"],"default"]
 3:I[57121,[],""]
 4:I[74581,[],""]
-5:I[61549,["787","static/chunks/787-d267683d3c135e5f.js","609","static/chunks/609-0ac3fce56292ceea.js","514","static/chunks/514-f5398c7db57eeef5.js","177","static/chunks/app/layout-9f8662d902ada21b.js"],"Toaster"]
-6:I[84317,["787","static/chunks/787-d267683d3c135e5f.js","609","static/chunks/609-0ac3fce56292ceea.js","514","static/chunks/514-f5398c7db57eeef5.js","177","static/chunks/app/layout-9f8662d902ada21b.js"],"Analytics"]
-:HL["/ledinh/_next/static/css/97d79f28b43ed591.css","style"]
+5:I[61549,["787","static/chunks/787-a1fb9186ff5b3321.js","609","static/chunks/609-45744b5a79533738.js","514","static/chunks/514-706e45da66226975.js","177","static/chunks/app/layout-ba956eb9e8ac4be9.js"],"Toaster"]
+6:I[84317,["787","static/chunks/787-a1fb9186ff5b3321.js","609","static/chunks/609-45744b5a79533738.js","514","static/chunks/514-706e45da66226975.js","177","static/chunks/app/layout-ba956eb9e8ac4be9.js"],"Analytics"]
+:HL["/ledinh/_next/static/css/76fa7932753e3da2.css","style"]
 :HL["/ledinh/_next/static/css/650d55904f37d554.css","style"]
-0:{"buildId":"30oCTht1rctvril--H7co","rsc":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/ledinh/_next/static/css/97d79f28b43ed591.css","precedence":"next"}],["$","link","1",{"rel":"stylesheet","href":"/ledinh/_next/static/css/650d55904f37d554.css","precedence":"next"}]],["$","html",null,{"lang":"vi","suppressHydrationWarning":true,"children":["$","body",null,{"className":"__className_b2a2db antialiased","children":["$","$L2",null,{"children":[["$","$L3",null,{"parallelRouterKey":"children","template":["$","$L4",null,{}]}],["$","$L5",null,{"position":"top-center","richColors":true}],["$","$L6",null,{}]]}]}]}]]}],"loading":null,"isPartial":false}
+0:{"buildId":"aTBhy3n8j-pZVoCzsmwdR","rsc":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/ledinh/_next/static/css/76fa7932753e3da2.css","precedence":"next"}],["$","link","1",{"rel":"stylesheet","href":"/ledinh/_next/static/css/650d55904f37d554.css","precedence":"next"}]],["$","html",null,{"lang":"vi","suppressHydrationWarning":true,"children":["$","body",null,{"className":"__className_b2a2db antialiased","children":["$","$L2",null,{"children":[["$","$L3",null,{"parallelRouterKey":"children","template":["$","$L4",null,{}]}],["$","$L5",null,{"position":"top-center","richColors":true}],["$","$L6",null,{}]]}]}]}]]}],"loading":null,"isPartial":false}
