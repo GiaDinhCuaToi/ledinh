@@ -1,0 +1,13 @@
+[
+  {
+    "user_id": "69ac30c2-2bb0-4677-8859-b7555d39a912",
+    "subscription": {
+      "endpoint": "https://web.push.apple.com/QCTkBuTb6jx0kGm311MDxJA-b4V8i5sHvBpSgKRJdLIhZIbDUDIyCDwjsHf4v9izoKwBT1vRwe0A3mVPjMxYHRzUs2R93m3GYsn98P-uiAPQg7zWqo4XfOJsoUL5OYW7mnIDJbjgJf4vexENYbpY-F5hSh8tb4Hg_OB5hPWGiwM",
+      "keys": {
+        "p256dh": "BDPmMW-SEjhJLhy6d9B2pBLlxuxPcNJ4Ql585MWxqEKLT6aeFMdDMpCIETQnGzU67x_1KfEer12vBF16aMozA3M",
+        "auth": "sQNP5goAZoD3Sgs5lecGHg"
+      }
+    },
+    "created_at": "2026-09-24T12:54:49.919Z"
+  }
+]
