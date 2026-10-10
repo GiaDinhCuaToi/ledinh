@@ -10,5 +10,16 @@
       }
     },
     "created_at": "2026-09-24T12:55:44.669Z"
+  },
+  {
+    "user_id": "ba8f5529-fc63-446e-ae37-390e821923cb",
+    "subscription": {
+      "endpoint": "https://web.push.apple.com/QAwhes5MvSWGckpqTZYLm1mQyyKrw5MAvgJfPwbqThVtsJv9UJd8ocPUzK3EeV6VR_SfdiJCZr4zX4f9YxA0znXDnefRY72xezalrtyt7YJevrzZj6Yc2hw29rRza6RJCfOeVCEihn1jpvQTP5SDo9DqYBH-1hD_JPrahWsilN0",
+      "keys": {
+        "p256dh": "BMX_P9shneGpCg0V0wPOPYYUa_HjW4AtM-GtJ1HFvUmM2XyCqKi4TxqVk7n-SBEAodiaQK5xdK5PNq6sBZ5Xiek",
+        "auth": "YFw0MbX_k3yMEwLmnGpGAg"
+      }
+    },
+    "created_at": "2026-10-10T16:14:02.904Z"
   }
 ]
