@@ -36,7 +36,12 @@ if (!trigger || !Array.isArray(trigger.recipients) || trigger.recipients.length 
 }
 
 const subscriptions = await readJson("data/push-subscriptions.json", [])
-const targets = subscriptions.filter((s) => trigger.recipients.includes(s.user_id))
+// excludeEndpoint (nếu có): bỏ qua ĐÚNG 1 thiết bị cụ thể — dùng cho trường hợp thiết bị vừa tự
+// thực hiện hành động (vd vừa nộp yêu cầu đăng ký) không cần tự báo lại cho chính nó, dù user_id
+// đó vẫn nằm trong danh sách nhận (các thiết bị KHÁC của cùng người đó vẫn nhận bình thường).
+const targets = subscriptions.filter(
+  (s) => trigger.recipients.includes(s.user_id) && s.subscription?.endpoint !== trigger.excludeEndpoint
+)
 
 if (targets.length === 0) {
   console.log("Không ai trong danh sách nhận đã bật thông báo đẩy — bỏ qua.")
