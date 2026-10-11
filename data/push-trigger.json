@@ -1,8 +1,9 @@
 {
   "recipients": [
-    "ba8f5529-fc63-446e-ae37-390e821923cb"
+    "ba8f5529-fc63-446e-ae37-390e821923cb",
+    "69ac30c2-2bb0-4677-8859-b7555d39a912",
+    "55403a1b-bee9-43fe-8175-dcd1f7514ca3"
   ],
-  "message": "Có yêu cầu đổi mật khẩu mới đang chờ duyệt — mở app để xem.",
-  "created_at": "2026-10-10T18:30:11.688Z",
-  "excludeEndpoint": "https://web.push.apple.com/QAwhes5MvSWGckpqTZYLm1mQyyKrw5MAvgJfPwbqThVtsJv9UJd8ocPUzK3EeV6VR_SfdiJCZr4zX4f9YxA0znXDnefRY72xezalrtyt7YJevrzZj6Yc2hw29rRza6RJCfOeVCEihn1jpvQTP5SDo9DqYBH-1hD_JPrahWsilN0"
+  "message": "Có một yêu cầu đổi mật khẩu vừa được phê duyệt — mở app để xem.",
+  "created_at": "2026-10-11T00:31:25.687Z"
 }
