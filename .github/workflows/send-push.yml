@@ -1,0 +1,41 @@
+name: Send push notification
+
+# Repo này (ledinh) là nơi web tĩnh + dữ liệu công khai sống (xem README của repo
+# SourceCode.ledinh.family để hiểu toàn bộ kiến trúc "git làm backend").
+#
+# File data/push-trigger.json được chính trang web ghi đè mỗi khi có thông báo mới cần báo
+# (bài/bình luận ở tường chung, hoặc bị @ nhắc tên) — chỉ chứa id nội bộ người nhận + 1 câu
+# CHUNG CHUNG (không tên ai, không nội dung thật), vì trang web mã hóa hết dữ liệu gia đình bằng
+# mã chung và Action này không có mã đó để đọc nội dung thật.
+#
+# Cần đúng 1 secret: VAPID_PRIVATE_KEY (khóa riêng VAPID, sinh cùng lúc với khóa công khai đã
+# gắn cứng trong code client — xem webclientFamily.client/lib/vault/config.ts).
+#
+# File này (và scripts/send-push.mjs) được deploy sang đây từ repo private "SourceCode.
+# ledinh.family" (nằm trong webclientFamily.client/public/, Next.js copy nguyên vào out/ rồi
+# .github/workflows/deploy.yml đẩy sang). Sửa thì sửa BÊN NGUỒN, không sửa trực tiếp ở đây —
+# lần deploy sau sẽ ghi đè mất.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "data/push-trigger.json"
+
+jobs:
+  send-push:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - run: npm install web-push@3
+
+      - run: node scripts/send-push.mjs
+        env:
+          VAPID_PUBLIC_KEY: BLsBVYoOod13NgS5pyIP9bM-tne_Jpf6-EDO7nV7zuLc-K_cPEX_4SOZegC561j4Zi8AV2EG4r4_5CoQFVkEEMc
+          VAPID_PRIVATE_KEY: ${{ secrets.VAPID_PRIVATE_KEY }}
+          VAPID_SUBJECT: https://giadinhcuatoi.github.io/ledinh
