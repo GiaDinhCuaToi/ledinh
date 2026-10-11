@@ -48,10 +48,15 @@ if (targets.length === 0) {
   process.exit(0)
 }
 
+// postId/commentId (nếu có — xem lib/vault/push.ts) chỉ là id nội bộ (UUID ngẫu nhiên), không
+// phải tên ai hay nội dung thật — đưa thẳng vào payload để sw.js biết kéo tới đúng bài/bình
+// luận nào khi bấm vào thông báo, thay vì chỉ mở trang chủ chung chung.
 const payload = JSON.stringify({
   title: "Dòng Họ Lê Đình",
   body: trigger.message || "Có thông báo mới — mở trang để xem.",
   url: "./",
+  postId: trigger.postId || null,
+  commentId: trigger.commentId || null,
 })
 
 let sent = 0
