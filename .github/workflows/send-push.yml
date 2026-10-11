@@ -36,6 +36,6 @@ jobs:
 
       - run: node scripts/send-push.mjs
         env:
-          VAPID_PUBLIC_KEY: BLsBVYoOod13NgS5pyIP9bM-tne_Jpf6-EDO7nV7zuLc-K_cPEX_4SOZegC561j4Zi8AV2EG4r4_5CoQFVkEEMc
+          VAPID_PUBLIC_KEY: BAmqiLTSXm91ZLYdH3Te0tg3aMZZk69Q0P0bM1PnkdI7uGcWtSboaIrcBAYP2zWceBGHIuE-rnqchlm-JFIgJoc
           VAPID_PRIVATE_KEY: ${{ secrets.VAPID_PRIVATE_KEY }}
           VAPID_SUBJECT: https://giadinhcuatoi.github.io/ledinh
