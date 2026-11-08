@@ -43,16 +43,5 @@
       }
     },
     "created_at": "2026-10-11T23:52:32.028Z"
-  },
-  {
-    "user_id": "ec7579a9-3fa4-449c-9c17-3c28b3cff58c",
-    "subscription": {
-      "endpoint": "https://web.push.apple.com/QAV44tarqDimEPc2SQQVd7IJRt0gMLm-SZVzk88SFufDf-taQLepYf_bbriy4m4AS8P9oebkRSPf7DVRrpFN75K0l2i9nl472LYY_v0S6RLTfdWMivx4my7yYbfzx7mYDZ-RCd6NOL1HnbD1DPYq7nPQVl8UpcYXoGDoBbv9Qok",
-      "keys": {
-        "p256dh": "BB2LqM7lrlJ7XqXGJNpYigegoRV7FAwWsbB1IQAS7UuXnAjgBnEgjDIv8GcWGAW-ydOH77SjDBtc9eUqo-zpkXY",
-        "auth": "7NcO4oPmYPQ-UIQK-YOF_w"
-      }
-    },
-    "created_at": "2026-10-12T02:27:47.342Z"
   }
 ]
