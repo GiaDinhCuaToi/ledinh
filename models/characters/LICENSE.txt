@@ -1,0 +1,7 @@
+Model nhân vật 3D (character-*.glb) trong thư mục này lấy từ bộ "Mini Characters"
+của Kenney (https://kenney.nl/assets/mini-characters), giấy phép CC0 (Creative Commons
+Zero — Public Domain): được dùng tự do cho mục đích cá nhân, giáo dục và thương mại,
+không bắt buộc ghi công tác giả (dù vậy vẫn xin cảm ơn Kenney.nl).
+
+Các file .glb đã được đóng gói lại (gộp texture vào thẳng file, dùng gltf-transform)
+từ bản gốc để gọn — không đổi nội dung mô hình/animation.
