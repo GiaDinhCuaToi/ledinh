@@ -1,0 +1,12 @@
+Model 3D trong thư mục này lấy từ bộ "Food Kit (2.0)" của Kenney
+(https://kenney.nl/assets/food-kit), giấy phép CC0 (Creative Commons Zero —
+Public Domain): được dùng tự do cho mục đích cá nhân, giáo dục và thương mại,
+không bắt buộc ghi công tác giả (dù vậy vẫn xin cảm ơn Kenney.nl).
+
+Chỉ lấy vài món cần dùng để bày lên bàn thờ tổ tiên trong tính năng "Tham
+Quan": plate.glb (đĩa), banana.glb/orange.glb/pineapple.glb/grapes.glb (mâm
+ngũ quả), cup-tea.glb (chén trà) — bỏ qua toàn bộ các món khác trong bộ gốc.
+
+Mỗi file đã được đóng gói lại bằng `gltf-transform copy` để nhúng thẳng
+texture (gốc là ảnh dùng chung Textures/colormap.png ở ngoài) vào trong từng
+file .glb, cho gọn 1 file độc lập khi phục vụ qua public/.
