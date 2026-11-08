@@ -1,0 +1,9 @@
+Model + animation (dáng quỳ vái/cầu nguyện) trong thư mục này tải từ Mixamo
+(mixamo.com, thuộc Adobe) qua tài khoản Adobe của người dùng — Mixamo cho
+phép dùng tự do nhân vật + animation tải về cho dự án cá nhân/thương mại
+(xem điều khoản dịch vụ Mixamo/Adobe tại thời điểm tải).
+
+Dùng trong tính năng "Tham Quan" (village-tour.tsx): khi 1 thành viên ĐÃ
+MẤT có người thắp hương tưởng nhớ (xem IncenseOffering, lib/types.ts), hình
+người của họ trong làng 3D chuyển sang dáng quỳ vái này thay vì đứng yên,
+thay cho model/animation "idle" dùng chung với người còn sống.
