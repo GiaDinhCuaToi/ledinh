@@ -1,13 +1,13 @@
 {
   "recipients": [
+    "ba8f5529-fc63-446e-ae37-390e821923cb",
     "76846602-9ff7-4efd-9313-3b419aa90309",
     "eacc2e56-3021-4217-b42e-bf8173eaf7ff",
-    "ec7579a9-3fa4-449c-9c17-3c28b3cff58c",
     "55403a1b-bee9-43fe-8175-dcd1f7514ca3",
     "4c45eb07-f430-44c4-9fc5-6f217ba1f756"
   ],
   "message": "Có hoạt động mới trên Bảng Tin Gia Đình — mở app để xem.",
   "postId": "329cdd5d-aa53-4ae7-a609-b74f9e64d6ad",
-  "commentId": "8c3f7f66-7e55-4821-b84e-aba21e9549d8",
-  "created_at": "2026-11-12T14:48:43.614Z"
+  "commentId": "2e925579-a4cd-411e-a25a-478a0cfc8105",
+  "created_at": "2026-11-13T23:04:32.873Z"
 }
