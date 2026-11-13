@@ -65,5 +65,17 @@
       }
     },
     "created_at": "2026-11-08T09:59:28.219Z"
+  },
+  {
+    "user_id": "ba8f5529-fc63-446e-ae37-390e821923cb",
+    "subscription": {
+      "endpoint": "https://fcm.googleapis.com/fcm/send/eNGD910MQxw:APA91bFd9FiQfxdxihas5uiT3CTdvphMkjU3UmSODZPJ0dyMF8_JDYkjgJG-2WfAt6Sje6pNkvaof07vjrWfQyefsSHYtL6mR4inuH2R2vXE5MLrPoHHM_OcE9zB5dgOQ-9AVi93cB6j",
+      "expirationTime": null,
+      "keys": {
+        "p256dh": "BISb8wKaBSzMFkhwjsTD74btAOwGuPwuhhYQbCpaJzD4sYwbAFSMBpBydBZpLQWedaYLBBeTKYqO5eEmTbXziR0",
+        "auth": "2jprgviuEEZE2lBjrbeLYw"
+      }
+    },
+    "created_at": "2026-11-13T15:14:45.445Z"
   }
 ]
