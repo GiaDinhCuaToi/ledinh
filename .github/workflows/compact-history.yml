@@ -1,0 +1,42 @@
+name: Gộp lịch sử cũ của kho dữ liệu
+
+# Kho này vừa là trang web tĩnh vừa là "cơ sở dữ liệu": mỗi lần trang lưu dữ liệu là 1 commit chứa
+# nguyên 1 bản data/vault.enc.json mới (đã mã hóa → git không nén gọn được). Không dọn thì LỊCH SỬ
+# lớn dần mãi (cỡ 0,5–1 GB mỗi năm) tới lúc GitHub nhắc/chặn vì kho quá lớn, dù các file đang dùng chỉ
+# vài chục MB. Workflow này chạy mỗi tuần: gộp mọi thứ cũ hơn 30 lần ghi gần nhất thành 1 commit, giữ
+# nguyên 30 lần ghi gần nhất (để còn khôi phục bản cũ gần đây). Nội dung file hiện tại không đổi 1
+# byte, và không bao giờ đè mất lần ghi nào của trang — chi tiết trong scripts/compact-history.sh.
+#
+# Lưu ý: sau khi gộp, GitHub tự dọn các bản cũ không còn dùng theo lịch riêng của họ (có thể vài ngày
+# tới vài tuần) — dung lượng kho hiển thị trên GitHub giảm dần chứ không tụt ngay.
+#
+# File này (và scripts/compact-history.sh) được deploy sang đây từ repo nguồn (nằm trong
+# webclientFamily.client/public/). Sửa thì sửa BÊN NGUỒN — lần deploy sau sẽ ghi đè.
+
+on:
+  schedule:
+    # 19:17 UTC Chủ nhật = 02:17 sáng thứ Hai giờ Việt Nam (lúc ít người dùng nhất).
+    - cron: "17 19 * * 0"
+  workflow_dispatch:
+  push:
+    # Chạy ngay khi chính 2 file này vừa được deploy/sửa (không phải chờ tới Chủ nhật mới biết có chạy được không).
+    paths:
+      - ".github/workflows/compact-history.yml"
+      - "scripts/compact-history.sh"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: compact-history
+  cancel-in-progress: false
+
+jobs:
+  compact:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - name: Gộp lịch sử (giữ 30 lần ghi gần nhất)
+        run: bash scripts/compact-history.sh "${GITHUB_REF_NAME}" 30
