@@ -4,9 +4,8 @@ name: Sao lưu sang nơi thứ hai
 # sau MỖI lần có dữ liệu mới — phòng khi GitHub khóa tài khoản, đổi luật hay đóng cửa. Chi tiết trong
 # scripts/mirror-backup.sh.
 #
-# Cần làm 1 lần: thêm secret MIRROR_REMOTE_URL (Settings → Secrets and variables → Actions) dạng
-#   https://<tên>:<token>@codeberg.org/<tên>/<kho>.git
-# Chưa có secret thì workflow chỉ in lời nhắc, không báo lỗi.
+# Cần làm 1 lần: thêm 3 secret MIRROR_URL, MIRROR_USER, MIRROR_TOKEN (Settings → Secrets and variables
+# → Actions) — ý nghĩa từng cái ở đầu scripts/mirror-backup.sh. Chưa có thì chỉ in lời nhắc, không báo lỗi.
 #
 # Không chạy theo lịch (cron): GitHub tự tắt workflow có lịch ở kho công khai sau 60 ngày không hoạt
 # động. Chạy theo lần đẩy dữ liệu là đủ — không có lần ghi thì cũng không có gì mới để sao.
@@ -36,4 +35,7 @@ jobs:
       - name: Chép sang nơi sao lưu
         env:
           MIRROR_REMOTE_URL: ${{ secrets.MIRROR_REMOTE_URL }}
+          MIRROR_URL: ${{ secrets.MIRROR_URL }}
+          MIRROR_USER: ${{ secrets.MIRROR_USER }}
+          MIRROR_TOKEN: ${{ secrets.MIRROR_TOKEN }}
         run: bash scripts/mirror-backup.sh "${GITHUB_REF_NAME}"

@@ -5,18 +5,31 @@
 # ngày GitHub khóa tài khoản/đổi luật/đóng cửa thì dữ liệu vẫn còn. Kho ảnh riêng (danh sách trong
 # data/media-repos.json) cũng được chép, sang kho CÙNG TÊN ở cùng chỗ với kho chính bên kia.
 #
-# Cần secret MIRROR_REMOTE_URL dạng https://<tên>:<token>@codeberg.org/<tên>/<kho>.git
+# Cần 3 secret ở kho dữ liệu (Settings → Secrets and variables → Actions):
+#   MIRROR_URL   = địa chỉ kho trống bên nơi sao lưu, chép nguyên nút "Copy" (HTTPS) bên đó,
+#                  vd https://codeberg.org/ten-cua-ban/ledinh.git
+#   MIRROR_USER  = tên đăng nhập bên đó (vd ten-cua-ban)
+#   MIRROR_TOKEN = token (mật khẩu dành cho máy) có quyền ghi kho, tạo trong cài đặt tài khoản bên đó
+# (Cách cũ vẫn dùng được: 1 secret MIRROR_REMOTE_URL dạng https://<tên>:<token>@codeberg.org/<tên>/<kho>.git)
 # Chưa đặt thì script chỉ in lời nhắc rồi thoát (không báo lỗi).
 #
 # Dùng (chạy bên trong bản checkout ĐẦY ĐỦ lịch sử của kho dữ liệu):
-#   MIRROR_REMOTE_URL=... bash scripts/mirror-backup.sh <nhánh>
+#   MIRROR_URL=... MIRROR_USER=... MIRROR_TOKEN=... bash scripts/mirror-backup.sh <nhánh>
 set -euo pipefail
 
 BRANCH="${1:?Thiếu tên nhánh}"
 URL="${MIRROR_REMOTE_URL:-}"
 SOURCE_HOST="${MIRROR_SOURCE_HOST:-https://github.com}"
+if [ -z "$URL" ] && [ -n "${MIRROR_URL:-}" ] && [ -n "${MIRROR_TOKEN:-}" ]; then
+  # Ghép tên + token vào địa chỉ: https://codeberg.org/... → https://<tên>:<token>@codeberg.org/...
+  # (người dùng chỉ việc chép địa chỉ kho, không phải tự ghép chuỗi khó hiểu).
+  clean="${MIRROR_URL#*://}"
+  clean="${clean#*@}"
+  URL="https://${MIRROR_USER:-oauth2}:${MIRROR_TOKEN}@${clean}"
+  case "$URL" in *.git) ;; *) URL="${URL%/}.git" ;; esac
+fi
 if [ -z "$URL" ]; then
-  echo "Chưa đặt secret MIRROR_REMOTE_URL — chưa sao lưu sang nơi thứ hai (xem hướng dẫn ở hộp 'Bảo Toàn Lâu Dài')."
+  echo "Chưa đặt secret MIRROR_URL / MIRROR_USER / MIRROR_TOKEN — chưa sao lưu sang nơi thứ hai (xem hướng dẫn ở hộp 'Bảo Toàn Lâu Dài')."
   exit 0
 fi
 
