@@ -14,11 +14,15 @@
 #   vừa ghi thêm dữ liệu trong lúc gộp thì lần đẩy bị từ chối → lấy về lại, gộp lại từ đầu; không bao
 #   giờ đè mất lần ghi nào.
 #
-# Dùng (chạy bên trong bản checkout của kho dữ liệu): bash scripts/compact-history.sh <nhánh> [keep]
+# Dùng (chạy bên trong bản checkout của kho dữ liệu): bash scripts/compact-history.sh <nhánh> [keep] [min]
+#   min: chỉ gộp khi lịch sử đã có HƠN <min> lần ghi (mặc định = keep). Workflow chạy sau mỗi lần ghi
+#   nên đặt min lớn hơn keep nhiều (vd 150) để không phải viết lại lịch sử sau từng lần lưu.
 set -euo pipefail
 
 BRANCH="${1:?Thiếu tên nhánh}"
 KEEP="${2:-30}"
+MIN="${3:-$KEEP}"
+if [ "$MIN" -lt "$KEEP" ]; then MIN="$KEEP"; fi
 # Máy chạy của GitHub Actions KHÔNG có sẵn tên/email git — phải tự đặt cho cả "người viết" (author)
 # lẫn "người ghi" (committer), thiếu là git từ chối tạo commit ("empty ident name"). Commit gốc gộp
 # dùng tên này; các commit được giữ lại thì vẫn mang đúng tác giả + ngày giờ gốc của chúng (đặt lại
@@ -27,6 +31,15 @@ export GIT_COMMITTER_NAME="github-actions[bot]"
 export GIT_COMMITTER_EMAIL="github-actions[bot]@users.noreply.github.com"
 export GIT_AUTHOR_NAME="$GIT_COMMITTER_NAME"
 export GIT_AUTHOR_EMAIL="$GIT_COMMITTER_EMAIL"
+
+# Đếm nhanh trước: lấy về tối đa MIN+1 commit. Ít hơn thế (hoặc chạm tới commit gốc thật) thì lịch
+# sử còn gọn — thoát ngay, không viết lại gì.
+git fetch --quiet --depth "$((MIN + 1))" origin "$BRANCH"
+mapfile -t PROBE < <(git rev-list --reverse FETCH_HEAD)
+if [ "${#PROBE[@]}" -le "$MIN" ] || ! git cat-file -p "${PROBE[0]}" | grep -q '^parent '; then
+  echo "Lịch sử đang gọn (${#PROBE[@]} lần ghi, ngưỡng gộp ${MIN}) — không cần gộp."
+  exit 0
+fi
 
 for attempt in 1 2 3 4 5; do
   git fetch --quiet --depth "$((KEEP + 1))" origin "$BRANCH"
@@ -66,5 +79,5 @@ for attempt in 1 2 3 4 5; do
   sleep "$((attempt * 4))"
 done
 
-echo "::warning::Chưa gộp được sau 5 lần (trang ghi dữ liệu liên tục) — lần chạy định kỳ sau sẽ thử lại."
+echo "::warning::Chưa gộp được sau 5 lần (trang ghi dữ liệu liên tục) — lần ghi dữ liệu kế tiếp sẽ thử lại."
 exit 0

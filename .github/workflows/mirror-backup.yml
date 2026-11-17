@@ -1,0 +1,39 @@
+name: Sao lưu sang nơi thứ hai
+
+# Chép kho dữ liệu này (đã mã hóa) + các kho ảnh riêng sang 1 dịch vụ git khác (Codeberg, GitLab…)
+# sau MỖI lần có dữ liệu mới — phòng khi GitHub khóa tài khoản, đổi luật hay đóng cửa. Chi tiết trong
+# scripts/mirror-backup.sh.
+#
+# Cần làm 1 lần: thêm secret MIRROR_REMOTE_URL (Settings → Secrets and variables → Actions) dạng
+#   https://<tên>:<token>@codeberg.org/<tên>/<kho>.git
+# Chưa có secret thì workflow chỉ in lời nhắc, không báo lỗi.
+#
+# Không chạy theo lịch (cron): GitHub tự tắt workflow có lịch ở kho công khai sau 60 ngày không hoạt
+# động. Chạy theo lần đẩy dữ liệu là đủ — không có lần ghi thì cũng không có gì mới để sao.
+#
+# File này (và scripts/mirror-backup.sh) được deploy sang đây từ repo nguồn (nằm trong
+# webclientFamily.client/public/). Sửa thì sửa BÊN NGUỒN — lần deploy sau sẽ ghi đè.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: mirror-backup
+  cancel-in-progress: true
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Chép sang nơi sao lưu
+        env:
+          MIRROR_REMOTE_URL: ${{ secrets.MIRROR_REMOTE_URL }}
+        run: bash scripts/mirror-backup.sh "${GITHUB_REF_NAME}"
