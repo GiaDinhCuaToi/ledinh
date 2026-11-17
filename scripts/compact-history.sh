@@ -19,8 +19,14 @@ set -euo pipefail
 
 BRANCH="${1:?Thiếu tên nhánh}"
 KEEP="${2:-30}"
+# Máy chạy của GitHub Actions KHÔNG có sẵn tên/email git — phải tự đặt cho cả "người viết" (author)
+# lẫn "người ghi" (committer), thiếu là git từ chối tạo commit ("empty ident name"). Commit gốc gộp
+# dùng tên này; các commit được giữ lại thì vẫn mang đúng tác giả + ngày giờ gốc của chúng (đặt lại
+# trong vòng lặp bên dưới).
 export GIT_COMMITTER_NAME="github-actions[bot]"
 export GIT_COMMITTER_EMAIL="github-actions[bot]@users.noreply.github.com"
+export GIT_AUTHOR_NAME="$GIT_COMMITTER_NAME"
+export GIT_AUTHOR_EMAIL="$GIT_COMMITTER_EMAIL"
 
 for attempt in 1 2 3 4 5; do
   git fetch --quiet --depth "$((KEEP + 1))" origin "$BRANCH"
