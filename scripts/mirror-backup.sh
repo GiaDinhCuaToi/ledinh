@@ -35,6 +35,12 @@ fi
 
 # --force: lịch sử ở đây có thể được gộp lại (compact-history.yml) → bên kia phải nhận bản viết lại.
 git push --quiet --force "$URL" "HEAD:refs/heads/${BRANCH}"
+# Nhánh ảnh "anh" (ảnh tải lên từ trang — xem MEDIA_BRANCH ở lib/vault/config.ts) cũng phải chép theo.
+MEDIA_BRANCH="${MIRROR_MEDIA_BRANCH:-anh}"
+if git fetch --quiet origin "refs/heads/${MEDIA_BRANCH}:refs/remotes/origin/${MEDIA_BRANCH}" 2>/dev/null; then
+  git push --quiet --force "$URL" "refs/remotes/origin/${MEDIA_BRANCH}:refs/heads/${MEDIA_BRANCH}"
+  echo "Đã chép nhánh ảnh ${MEDIA_BRANCH}."
+fi
 echo "Đã chép kho dữ liệu sang nơi thứ hai."
 
 [ -f data/media-repos.json ] || exit 0
