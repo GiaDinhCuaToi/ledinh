@@ -1,0 +1,8 @@
+Model/animation/texture nhân vật 3D trong thư mục này lấy từ bộ "Animated Characters Retro"
+của Kenney (https://kenney.nl/assets/animated-characters-retro), giấy phép CC0 (Creative
+Commons Zero — Public Domain): được dùng tự do cho mục đích cá nhân, giáo dục và thương mại,
+không bắt buộc ghi công tác giả (dù vậy vẫn xin cảm ơn Kenney.nl).
+
+Chỉ lấy phần cần dùng từ bộ gốc: characterMedium.fbx (model + khung xương), idle.fbx (animation
+đứng yên tự nhiên), và 2 bộ da người thường (humanMaleA.png/humanFemaleA.png) — bỏ qua phần
+animation jump/run và 2 bộ da zombie không dùng tới trong tính năng "Tham Quan".

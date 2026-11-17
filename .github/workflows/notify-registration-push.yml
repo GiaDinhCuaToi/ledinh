@@ -1,0 +1,41 @@
+name: Thông báo đẩy khi có yêu cầu đăng ký / đổi mật khẩu mới
+
+# Trước khi gộp kiến trúc về 1 repo (xem Readme.txt mục 4/8), Issue yêu cầu đăng ký/đổi mật khẩu
+# nằm ở repo private "SourceCode.ledinh.family" khác với repo "ledinh" (nơi web + vault sống), nên
+# workflow này phải ghi CHÉO sang "ledinh" qua GitHub Contents API (cần 1 token riêng). Nay Issue
+# đã chuyển hẳn về CHÍNH repo "ledinh" (nội dung mỗi yêu cầu cũng đã được mã hóa hybrid toàn bộ —
+# xem PendingRegistration.encrypted/PendingPasswordReset.encrypted trong lib/types.ts) nên workflow
+# này gửi đẩy TRỰC TIẾP luôn, dùng lại đúng VAPID_PRIVATE_KEY đã có sẵn cho send-push.yml (cùng
+# thư mục) — không cần thêm secret nào mới, không cần ghi file gì cả.
+#
+# File này (và scripts/notify-registration-push.mjs) được deploy sang đây từ repo private "SourceCode.
+# ledinh.family" (nằm trong webclientFamily.client/public/, Next.js copy nguyên vào out/ rồi
+# .github/workflows/deploy.yml đẩy sang). Sửa thì sửa BÊN NGUỒN, không sửa trực tiếp ở đây — lần
+# deploy sau sẽ ghi đè mất.
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    if: >-
+      contains(github.event.issue.labels.*.name, 'yeu-cau-dang-ky') ||
+      contains(github.event.issue.labels.*.name, 'yeu-cau-doi-mat-khau')
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - run: npm install web-push@3
+
+      - run: node scripts/notify-registration-push.mjs
+        env:
+          VAPID_PUBLIC_KEY: BAmqiLTSXm91ZLYdH3Te0tg3aMZZk69Q0P0bM1PnkdI7uGcWtSboaIrcBAYP2zWceBGHIuE-rnqchlm-JFIgJoc
+          VAPID_PRIVATE_KEY: ${{ secrets.VAPID_PRIVATE_KEY }}
+          VAPID_SUBJECT: https://giadinhcuatoi.github.io/ledinh
+          ISSUE_KIND: ${{ contains(github.event.issue.labels.*.name, 'yeu-cau-dang-ky') && 'registration' || 'password_reset' }}
+          ISSUE_BODY: ${{ github.event.issue.body }}

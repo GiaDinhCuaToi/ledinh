@@ -1,0 +1,48 @@
+Copyright (c) 2026 Dòng Họ Lê Đình (GiaDinhCuaToi). All rights reserved.
+
+TIẾNG VIỆT
+
+Bản quyền đã đăng ký — Giữ toàn bộ quyền.
+
+Mã nguồn, thiết kế, nội dung và dữ liệu trong kho lưu trữ này (bao gồm cả
+bản build tĩnh được triển khai sang các repo công khai khác) KHÔNG được
+cấp phép mã nguồn mở (not open source). Trừ khi có sự đồng ý bằng văn bản
+từ chủ sở hữu, nghiêm cấm:
+
+  - Sao chép, nhân bản (fork/clone để dùng lại) toàn bộ hoặc một phần
+    mã nguồn/thiết kế cho mục đích khác ngoài xem trực tiếp trên trang;
+  - Phân phối lại, đăng tải lại, hay tự triển khai (tự host) một bản sao
+    của trang web hoặc mã nguồn này ở nơi khác;
+  - Sửa đổi và phát hành lại dưới tên khác;
+  - Sử dụng cho mục đích thương mại.
+
+Việc trình duyệt tải về HTML/JS/CSS để HIỂN THỊ trang (như mọi trang web
+công khai khác) không phải là sự cho phép sử dụng lại các tệp đó ngoài
+mục đích xem trang.
+
+Mọi câu hỏi về việc xin phép sử dụng, vui lòng liên hệ chủ sở hữu kho lưu
+trữ này trên GitHub (tổ chức GiaDinhCuaToi).
+
+
+ENGLISH
+
+All Rights Reserved.
+
+The source code, design, content and data in this repository (including
+the static build deployed to other public repositories) are NOT licensed
+as open source. Unless you have prior written permission from the
+copyright holder, you may NOT:
+
+  - Copy, fork, or clone this project's source code or design for reuse
+    beyond simply viewing the live site;
+  - Redistribute, re-host, or re-publish a copy of this website or its
+    source code elsewhere;
+  - Modify and re-release it under a different name;
+  - Use it for any commercial purpose.
+
+A browser downloading HTML/JS/CSS to RENDER the page (as with any public
+website) does not constitute permission to reuse those files for any
+other purpose.
+
+For permission requests, please contact the owner of this repository via
+GitHub (GiaDinhCuaToi organization).
